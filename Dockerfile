@@ -1,4 +1,4 @@
-FROM node:18.16.0-alpine as base
+FROM node:18.17.1-alpine as base
 RUN apk add --no-cache bash
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* /tmp/app/
 RUN cd /tmp/app &&         if [ -f yarn.lock ]; then yarn --frozen-lockfile;         elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile;         else npm install;         fi
